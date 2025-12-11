@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BodyMate - AI 기반 피트니스 코치</title>
+    <title>GenfFit - AI 기반 피트니스 & 바디스캔</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -11,10 +11,11 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="logo">BodyMate</div>
+            <div class="logo">GenfFit</div>
             <ul class="nav-links">
                 <li><a href="#features">기능</a></li>
                 <li><a href="#how-it-works">사용 방법</a></li>
+                <li><a href="#analysis">분석</a></li>
                 <li><a href="#nft">NFT 뱃지</a></li>
                 <li><a href="#download" class="btn-nav">다운로드</a></li>
             </ul>
@@ -25,10 +26,11 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>당신의 건강한 습관을 <span class="highlight">NFT</span>로 기록하세요</h1>
+                <h1>AI <span class="highlight">바디스캔</span>으로<br>당신의 변화를 기록하세요</h1>
                 <p class="hero-description">
-                    AI 기반 3D 자세 분석과 개인 맞춤형 운동 코칭으로
+                    ARKit 기반 3D 자세 분석과 실시간 신체 변화 트래킹으로
                     더 정확하고, 더 효과적인 피트니스 경험을 시작하세요.
+                    운동 성과는 NFT로 영원히 기록됩니다.
                 </p>
                 <div class="hero-buttons">
                     <a href="#download" class="btn btn-primary">앱 다운로드</a>
@@ -36,16 +38,16 @@
                 </div>
                 <div class="hero-stats">
                     <div class="stat">
-                        <span class="stat-number">10K+</span>
-                        <span class="stat-label">활성 사용자</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">50K+</span>
-                        <span class="stat-label">발급된 NFT</span>
-                    </div>
-                    <div class="stat">
                         <span class="stat-number">98%</span>
                         <span class="stat-label">자세 분석 정확도</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">4가지</span>
+                        <span class="stat-label">핵심 분석 지표</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">무제한</span>
+                        <span class="stat-label">NFT 뱃지 발급</span>
                     </div>
                 </div>
             </div>
@@ -86,18 +88,18 @@
         <div class="container">
             <div class="section-header">
                 <h2>스마트한 피트니스의 시작</h2>
-                <p>BodyMate만의 특별한 기능을 만나보세요</p>
+                <p>GenfFit만의 특별한 기능을 만나보세요</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M12 6v6l4 2"/>
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                            <circle cx="12" cy="13" r="4"/>
                         </svg>
                     </div>
-                    <h3>3D 자세 분석</h3>
-                    <p>ARKit 기반 정밀 3D 분석으로 당신의 자세를 정확하게 측정하고 실시간 피드백을 제공합니다.</p>
+                    <h3>AI 바디스캔</h3>
+                    <p>ARKit 기반 카메라로 당신의 자세와 신체를 정밀하게 3D 분석합니다. 실시간 피드백으로 정확한 측정이 가능합니다.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -107,27 +109,106 @@
                             <path d="M6 20v-6"/>
                         </svg>
                     </div>
-                    <h3>운동 분석 대시보드</h3>
-                    <p>체중, 체지방률, 골격근량 등 신체 변화를 시각화된 그래프로 한눈에 확인하세요.</p>
+                    <h3>신체 변화 분석</h3>
+                    <p>체중, 체지방률, 골격근량 등 핵심 지표의 변화를 시각화된 그래프로 한눈에 확인하세요.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
                         </svg>
                     </div>
-                    <h3>맞춤형 운동 루틴</h3>
-                    <p>AI가 분석한 데이터를 기반으로 당신에게 딱 맞는 운동 루틴을 추천합니다.</p>
+                    <h3>자세 점수 트래킹</h3>
+                    <p>주간 자세 점수 변화를 추적하고, 운동 횟수, 총 시간, 소모 칼로리 등 상세 기록을 확인하세요.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="9" y1="9" x2="15" y2="15"/>
+                            <line x1="15" y1="9" x2="9" y2="15"/>
                         </svg>
                     </div>
-                    <h3>NFT 뱃지 시스템</h3>
-                    <p>운동 목표 달성 시 특별한 NFT 뱃지를 발급받아 성취감을 블록체인에 영원히 기록하세요.</p>
+                    <h3>나만의 운동 루틴</h3>
+                    <p>코어 강화, 상체 근력 등 다양한 루틴을 직접 구성하고 관리하세요. 나만의 맞춤 운동 계획을 만들 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analysis Section -->
+    <section id="analysis" class="analysis-section">
+        <div class="container">
+            <div class="analysis-content">
+                <div class="analysis-text">
+                    <h2>데이터로 보는 <span class="highlight">나의 변화</span></h2>
+                    <p>
+                        GenfFit은 당신의 피트니스 여정을 숫자로 증명합니다.
+                        주간 운동 기록부터 신체 변화까지, 모든 데이터를 한눈에 파악하세요.
+                    </p>
+                    <div class="analysis-metrics">
+                        <div class="metric-item">
+                            <div class="metric-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="12" cy="7" r="4"/>
+                                </svg>
+                            </div>
+                            <div class="metric-info">
+                                <span class="metric-label">체중 / 체지방률</span>
+                                <span class="metric-desc">일별 변화 추적</span>
+                            </div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                </svg>
+                            </div>
+                            <div class="metric-info">
+                                <span class="metric-label">골격근량</span>
+                                <span class="metric-desc">근육 발달 모니터링</span>
+                            </div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                            </div>
+                            <div class="metric-info">
+                                <span class="metric-label">주간 운동 기록</span>
+                                <span class="metric-desc">운동 횟수, 시간, 칼로리</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="analysis-visual">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <span>자세 점수 변화</span>
+                            <span class="chart-period">이번 주</span>
+                        </div>
+                        <div class="chart-placeholder">
+                            <div class="chart-bar" style="height: 75%"></div>
+                            <div class="chart-bar" style="height: 80%"></div>
+                            <div class="chart-bar" style="height: 78%"></div>
+                            <div class="chart-bar" style="height: 85%"></div>
+                            <div class="chart-bar" style="height: 82%"></div>
+                            <div class="chart-bar" style="height: 88%"></div>
+                            <div class="chart-bar active" style="height: 90%"></div>
+                        </div>
+                        <div class="chart-labels">
+                            <span>월</span>
+                            <span>화</span>
+                            <span>수</span>
+                            <span>목</span>
+                            <span>금</span>
+                            <span>토</span>
+                            <span>일</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -137,26 +218,32 @@
     <section id="how-it-works" class="how-it-works">
         <div class="container">
             <div class="section-header">
-                <h2>간단한 3단계로 시작하세요</h2>
+                <h2>간단한 4단계로 시작하세요</h2>
                 <p>복잡한 설정 없이 바로 시작할 수 있어요</p>
             </div>
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
                     <h3>프로필 설정</h3>
-                    <p>기본 신체 정보를 입력하고 운동 목표를 설정하세요.</p>
+                    <p>신장, 체중, 나이, 성별 등 기본 신체 정보를 입력하세요.</p>
                 </div>
                 <div class="step-connector"></div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3>자세 측정</h3>
-                    <p>카메라를 통해 AI가 당신의 자세를 3D로 분석합니다.</p>
+                    <h3>바디스캔</h3>
+                    <p>카메라로 AI가 당신의 자세와 신체를 3D 분석합니다.</p>
                 </div>
                 <div class="step-connector"></div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>운동 시작</h3>
-                    <p>맞춤형 루틴으로 운동하고 NFT 뱃지를 획득하세요.</p>
+                    <h3>운동 루틴 선택</h3>
+                    <p>추천 루틴을 선택하거나 나만의 루틴을 만드세요.</p>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>NFT 뱃지 획득</h3>
+                    <p>목표 달성 시 NFT 뱃지를 발급받아 성과를 기록하세요.</p>
                 </div>
             </div>
         </div>
@@ -169,7 +256,7 @@
                 <div class="nft-text">
                     <h2>운동 성과를 <span class="highlight">NFT</span>로 영원히</h2>
                     <p>
-                        BodyMate는 당신의 운동 기록을 특별한 NFT 뱃지로 발급합니다.
+                        GenfFit은 당신의 운동 기록을 특별한 NFT 뱃지로 발급합니다.
                         첫 운동 완료, 완벽한 스쿼트 자세, 7일 연속 운동 등
                         다양한 성취를 블록체인에 기록하고 컬렉션을 완성하세요.
                     </p>
@@ -191,6 +278,12 @@
                                 <polyline points="20 6 9 17 4 12"/>
                             </svg>
                             SNS 공유 가능한 디지털 자산
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            마이바디에서 NFT 컬렉션 관리
                         </li>
                     </ul>
                 </div>
@@ -217,7 +310,7 @@
         <div class="container">
             <div class="download-content">
                 <h2>지금 바로 시작하세요</h2>
-                <p>BodyMate와 함께 건강한 습관을 만들어 보세요</p>
+                <p>GenfFit과 함께 AI 기반 피트니스를 경험하세요</p>
                 <div class="download-buttons">
                     <a href="#" class="store-button">
                         <svg viewBox="0 0 24 24" fill="currentColor">
@@ -247,21 +340,23 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <div class="logo">BodyMate</div>
-                    <p>AI 기반 피트니스 코치</p>
+                    <div class="logo">GenfFit</div>
+                    <p>AI 기반 피트니스 & 바디스캔</p>
                 </div>
                 <div class="footer-links">
                     <div class="footer-column">
                         <h4>제품</h4>
                         <a href="#features">기능</a>
+                        <a href="#analysis">분석</a>
                         <a href="#nft">NFT 뱃지</a>
                         <a href="#download">다운로드</a>
                     </div>
                     <div class="footer-column">
-                        <h4>회사</h4>
-                        <a href="#">소개</a>
-                        <a href="#">채용</a>
-                        <a href="#">블로그</a>
+                        <h4>주요 기능</h4>
+                        <a href="#">바디스캔</a>
+                        <a href="#">운동 루틴</a>
+                        <a href="#">신체 분석</a>
+                        <a href="#">NFT 컬렉션</a>
                     </div>
                     <div class="footer-column">
                         <h4>지원</h4>
@@ -272,7 +367,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 BodyMate. All rights reserved.</p>
+                <p>&copy; 2025 GenfFit. All rights reserved.</p>
                 <div class="footer-legal">
                     <a href="#">개인정보처리방침</a>
                     <a href="#">이용약관</a>
