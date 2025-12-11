@@ -5,10 +5,942 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GenfFit - AI 기반 피트니스 & 바디스캔</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* --- CSS 스타일 시작 --- */
+        
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --accent-color: #AEB4FF;
+            --dark-bg: #0F0F1A;
+            --card-bg: #1C1C2E;
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --gradient-start: #6366f1;
+            --gradient-end: #8b5cf6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 15, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .btn-nav {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            padding: 10px 20px;
+            border-radius: 8px;
+            color: white !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 72px;
+            overflow: hidden;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Phone Mockup */
+        .hero-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-mockup {
+            width: 280px;
+            height: 580px;
+            background: linear-gradient(145deg, #2a2a3e, #1a1a2e);
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 24px;
+            background: #000;
+            border-radius: 12px;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: var(--dark-bg);
+            border-radius: 32px;
+            overflow: hidden;
+            padding: 60px 20px 20px;
+        }
+
+        .app-preview {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .preview-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+        }
+
+        .greeting {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .greeting .name {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .greeting .message {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .preview-card {
+            background: var(--accent-color);
+            padding: 24px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .card-label {
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: rgba(0, 0, 0, 0.8);
+        }
+
+        .preview-stats {
+            display: flex;
+            gap: 12px;
+        }
+
+        .mini-stat {
+            flex: 1;
+            background: var(--card-bg);
+            padding: 16px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .mini-value {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .mini-label {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 120px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--text-secondary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .feature-icon svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Analysis Section */
+        .analysis-section {
+            padding: 120px 0;
+            background: linear-gradient(180deg, rgba(28, 28, 46, 0.3) 0%, var(--dark-bg) 100%);
+        }
+
+        .analysis-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .analysis-text h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .analysis-text p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .analysis-metrics {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .metric-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .metric-item:hover {
+            transform: translateX(8px);
+            background: rgba(99, 102, 241, 0.15);
+        }
+
+        .metric-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .metric-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .metric-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .metric-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .metric-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .analysis-visual {
+            display: flex;
+            justify-content: center;
+        }
+
+        .chart-card {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .chart-header span:first-child {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .chart-period {
+            font-size: 14px;
+            color: var(--accent-color);
+            background: rgba(174, 180, 255, 0.1);
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+
+        .chart-placeholder {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            height: 150px;
+            padding: 0 8px;
+            margin-bottom: 16px;
+        }
+
+        .chart-bar {
+            width: 32px;
+            background: linear-gradient(180deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 6px 6px 0 0;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .chart-bar:hover,
+        .chart-bar.active {
+            opacity: 1;
+            transform: scaleY(1.05);
+            transform-origin: bottom;
+        }
+
+        .chart-labels {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 8px;
+        }
+
+        .chart-labels span {
+            width: 32px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 120px 0;
+            background: linear-gradient(180deg, var(--dark-bg) 0%, rgba(28, 28, 46, 0.5) 100%);
+        }
+
+        .steps {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .step {
+            text-align: center;
+            max-width: 280px;
+        }
+
+        .step-number {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 24px;
+        }
+
+        .step h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .step p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .step-connector {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            opacity: 0.3;
+        }
+
+        /* NFT Section */
+        .nft-section {
+            padding: 120px 0;
+        }
+
+        .nft-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .nft-text h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .nft-text p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .nft-benefits {
+            list-style: none;
+        }
+
+        .nft-benefits li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 16px;
+        }
+
+        .nft-benefits svg {
+            width: 24px;
+            height: 24px;
+            color: #22c55e;
+        }
+
+        .nft-showcase {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+        }
+
+        .nft-card {
+            text-align: center;
+        }
+
+        .nft-badge {
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nft-badge::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+        }
+
+        .first-workout {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        }
+
+        .perfect-squat {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+        }
+
+        .streak-7 {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        .nft-card span {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Download Section */
+        .download-section {
+            padding: 120px 0;
+            background: linear-gradient(180deg, rgba(99, 102, 241, 0.1), transparent);
+        }
+
+        .download-content {
+            text-align: center;
+        }
+
+        .download-content h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .download-content p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+        }
+
+        .store-button {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--card-bg);
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .store-button:hover {
+            background: rgba(28, 28, 46, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .store-button svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .store-text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .store-label {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        .store-name {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 80px 0 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 12px;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 80px;
+        }
+
+        .footer-column h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .footer-column a {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-legal a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .analysis-content {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .analysis-visual {
+                order: -1;
+            }
+
+            .nft-content {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .nft-showcase {
+                order: -1;
+            }
+
+            .steps {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 16px;
+            }
+
+            .step-connector {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar .container {
+                flex-direction: column;
+                height: auto;
+                padding: 16px 24px;
+                gap: 16px;
+            }
+
+            .nav-links {
+                gap: 16px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding-top: 140px;
+            }
+
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .phone-mockup {
+                width: 240px;
+                height: 500px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                flex-direction: column;
+            }
+
+            .step-connector {
+                width: 2px;
+                height: 40px;
+            }
+
+            .nft-showcase {
+                flex-wrap: wrap;
+            }
+
+            .analysis-text h2 {
+                font-size: 28px;
+            }
+
+            .chart-card {
+                max-width: 100%;
+            }
+
+            .chart-bar {
+                width: 24px;
+            }
+
+            .chart-labels span {
+                width: 24px;
+                font-size: 10px;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 48px;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+        /* --- CSS 스타일 끝 --- */
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <div class="logo">GenfFit</div>
@@ -22,7 +954,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -83,7 +1014,6 @@
         </div>
     </section>
 
-    <!-- Features Section -->
     <section id="features" class="features">
         <div class="container">
             <div class="section-header">
@@ -136,7 +1066,6 @@
         </div>
     </section>
 
-    <!-- Analysis Section -->
     <section id="analysis" class="analysis-section">
         <div class="container">
             <div class="analysis-content">
@@ -214,7 +1143,6 @@
         </div>
     </section>
 
-    <!-- How It Works Section -->
     <section id="how-it-works" class="how-it-works">
         <div class="container">
             <div class="section-header">
@@ -249,7 +1177,6 @@
         </div>
     </section>
 
-    <!-- NFT Section -->
     <section id="nft" class="nft-section">
         <div class="container">
             <div class="nft-content">
@@ -305,7 +1232,6 @@
         </div>
     </section>
 
-    <!-- Download Section -->
     <section id="download" class="download-section">
         <div class="container">
             <div class="download-content">
@@ -335,7 +1261,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
