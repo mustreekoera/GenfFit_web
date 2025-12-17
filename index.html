@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GenfFit - AI 기반 피트니스 & 바디스캔</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <style>
         /* --- CSS 스타일 시작 --- */
         
@@ -627,6 +628,11 @@
 
         .nft-card {
             text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .nft-card:hover {
+            transform: translateY(-5px);
         }
 
         .nft-badge {
@@ -636,30 +642,59 @@
             margin-bottom: 12px;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
+        /* 뱃지 배경 그라데이션 및 아이콘 설정 */
         .nft-badge::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+            background: rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .nft-card:hover .nft-badge::before {
+            opacity: 1;
         }
 
+        /* 첫 운동 완료 - 파란색 + 덤벨 */
         .first-workout {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            background: linear-gradient(135deg, #60a5fa, #1d4ed8);
         }
-
+        
+        /* 완벽한 스쿼트 - 초록색 + 사람 */
         .perfect-squat {
-            background: linear-gradient(135deg, #22c55e, #16a34a);
+            background: linear-gradient(135deg, #4ade80, #15803d);
         }
 
+        /* 7일 연속 운동 - 주황색 + 불꽃 */
         .streak-7 {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
+            background: linear-gradient(135deg, #fb923c, #c2410c);
+        }
+
+        .nft-badge .material-icons {
+            font-size: 48px;
+            color: white;
+            z-index: 1;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .nft-card:hover .material-icons {
+            transform: scale(1.1);
         }
 
         .nft-card span {
             font-size: 14px;
             color: var(--text-secondary);
+            display: block;
+            margin-top: 8px;
+            font-weight: 500;
         }
 
         /* Download Section */
@@ -1216,15 +1251,23 @@
                 </div>
                 <div class="nft-showcase">
                     <div class="nft-card">
-                        <div class="nft-badge first-workout"></div>
+                        <div class="nft-badge first-workout">
+                            <span class="material-icons">fitness_center</span>
+                        </div>
                         <span>첫 운동 완료</span>
                     </div>
+
                     <div class="nft-card">
-                        <div class="nft-badge perfect-squat"></div>
+                        <div class="nft-badge perfect-squat">
+                            <span class="material-icons">accessibility_new</span>
+                        </div>
                         <span>완벽한 스쿼트</span>
                     </div>
+
                     <div class="nft-card">
-                        <div class="nft-badge streak-7"></div>
+                        <div class="nft-badge streak-7">
+                            <span class="material-icons">local_fire_department</span>
+                        </div>
                         <span>7일 연속 운동</span>
                     </div>
                 </div>
